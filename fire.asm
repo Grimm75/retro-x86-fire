@@ -24,7 +24,7 @@ l1:     inc ax
 
         xchg ax,cx         ; ax = 0 ; cx = 64
         shr cx,1           ; cx = 32
-l2:     inc ax             ; indexes 32 - 63: red -> yellow
+l2:     inc ax             ; indexes 32 - 63: red -> yellow gradient
         xchg ax,bx
         mov al,63
         out dx,al          ; R = 63
@@ -38,7 +38,7 @@ l2:     inc ax             ; indexes 32 - 63: red -> yellow
 
         xchg ax,cx         ; ax = 0 ; cx = 64
         shr cl,1           ; cx = 32
-l3:     inc ax             ; indexes 64 - 95: yellow -> white
+l3:     inc ax             ; indexes 64 - 95: yellow -> white gradient
         xchg ax,bx
         mov al,63
         out dx,al          ; R = 63
@@ -60,7 +60,7 @@ l4:     out dx,al          ; R|G|B = 63
                            ; main loop (drawing single pixel as 2x2 square)
 
 l5:     mov cx,320         ; 1 line/column is 320 pixels / bytes
-l6:     mov si,19520
+l6:     mov si,19520       ; we start on line 61, reserving top for other use (maybe text)
         sub si,cx
 l7:     mov al,[si]        ; al = current pixel color index
         add al,[si+2]      ; al += index of right pixel neighbour
@@ -81,7 +81,7 @@ l8:     mov ah,al          ; duplicate ah from al (2 pixels of same index)
         sub si,di          ; we are too deep, fix that
         lea dx,[edx+edx*4] ; almoust PRNG, result in dh ; db 67h,8dh,14h,92h
         mov [si],dh        ; store new pixel
-        or byte [si],160   ; be sure, pixel is not too dark ; 10100000
+        or byte [si],160   ; be sure, pixel is not too dark ; 10100000b
 l9:     dec cx
         loop l6            ; next column
         in al,60h          ; read key

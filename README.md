@@ -11,9 +11,10 @@ Needs 80386 CPU or later.
 **Tools needed:**
 - NASM - https://nasm.us/
 - Doxbox - https://www.dosbox.com/
+- GNU Make - https://www.gnu.org/software/make/ (optional)
 
 **Build:**
-- `nasm -f bin -o fire.com fire.asm`
+- `nasm -f bin -o fire.com fire.asm` or just run `make`
 
 **Run:**
 - `dosbox fire.com`
