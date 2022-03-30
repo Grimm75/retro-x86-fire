@@ -6,13 +6,13 @@ My old code from 1998.
 Displays animated fire on VGA 320x200 256-Color Mode.  
 Target was smallest binary size, so I can build custom (and still fully functional) MBR with builtin fireplace simulator.  
 Resulting in 144 bytes executable.  
-Needs 80386 CPU or later.  
+Needs 80386 CPU or later.
 
 **Tools needed:**
 - NASM - https://nasm.us/
 - Doxbox - https://www.dosbox.com/
 
-**Rebuild:**
+**Build:**
 - `nasm -f bin -o fire.com fire.asm`
 
 **Run:**
