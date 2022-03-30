@@ -13,6 +13,9 @@ Needs 80386 CPU or later.
 - Doxbox - https://www.dosbox.com/
 - GNU Make - https://www.gnu.org/software/make/ (optional)
 
+**Debian/Ubuntu tools installation:**
+- `apt install nasm dosbox make`
+
 **Build:**
 - `nasm -f bin -o fire.com fire.asm` or just run `make`
 
